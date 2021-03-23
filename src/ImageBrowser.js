@@ -73,7 +73,7 @@ export default class ImageBrowser extends React.Component {
       newSelected.splice(deleteIndex, 1);
     }
     if (newSelected.length > this.props.max) return;
-    if (!newSelected) newSelected = []; 
+    if (!newSelected) newSelected = [];
     this.setState({selected: newSelected}, () =>{
       this.props.onChange(newSelected.length, () => this.prepareCallback());
     });
@@ -118,8 +118,8 @@ export default class ImageBrowser extends React.Component {
     if (!loadCompleteMetadata){
       this.props.callback(Promise.all(selectedPhotos));
     } else {
-      const assetsInfo = Promise.all(selectedPhotos.map(i => MediaLibrary.getAssetInfoAsync(i)));
-      this.props.callback(assetsInfo);
+      // const assetsInfo = Promise.all(selectedPhotos.map(i => MediaLibrary.getAssetInfoAsync(i)));
+      this.props.callback(selectedPhotos);
     }
   }
 
