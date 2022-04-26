@@ -10,6 +10,7 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 import * as MediaLibrary from 'expo-media-library'
 import * as Permissions from 'expo-permissions'
 import ImageTile from './ImageTile'
+import * as ImagePicker from 'expo-image-picker';
 
 const {width} = Dimensions.get('window');
 
@@ -44,7 +45,7 @@ export default class ImageBrowser extends React.Component {
 
   getPermissionsAsync = async () => {
     const {status: camera} = await Permissions.askAsync(Permissions.CAMERA);
-    const {status: cameraRoll} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+     const {status: cameraRoll} = await ImagePicker.getMediaLibraryPermissionsAsync()
     this.setState({
       hasCameraPermission: camera === 'granted',
       hasCameraRollPermission: cameraRoll === 'granted'
